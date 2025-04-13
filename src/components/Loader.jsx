@@ -1,7 +1,7 @@
 import { useState, useEffect,useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react"; // for hamburger icon
-import logo from "../assets/AG.svg"; // Assume this is the NavBar logo
+import logo from "../assets/AG.svg";
 
 function AGSvg({ onComplete }) {
   return (
