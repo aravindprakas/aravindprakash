@@ -1,11 +1,11 @@
 const aboutMe = [
-    'I am a results-driven Software Engineer with expertise in Adobe Experience Manager (AEM) and React.js, specializing in developing scalable, high-performance web applications. ',
-    'With a proven track record of delivering 100% of assigned AEM component customizations and enhancing development efficiency by 30%, I excel at integrating modern frontend frameworks with enterprise CMS solutions.',
-    'My work has consistently met business requirements with a 95% completion rate while ensuring 98% design-to-implementation accuracy.',
-    'I am passionate about creating seamless digital experiences, optimizing performance, and ensuring responsive design across devices.',
-    'Beyond my technical expertise, I thrive in collaborative environments, contributing to cross-functional teams and delivering projects 92% on time.',
-    'A continuous learner, I actively explore emerging web technologies to stay ahead in the industry.',
-    'My goal is to develop innovative solutions that enhance user engagement while maintaining technical excellence and efficiency.'
-]
+    'I am a results-driven Software Engineer with expertise in Adobe Experience Manager (AEM) and React.js, focused on building scalable and high-performance web applications.',
+    'I have a proven track record of completing 100% of assigned AEM component customizations and improving development efficiency by 30%.',
+    'I consistently deliver solutions that meet business requirements with a 95% completion rate and maintain 98% design-to-implementation accuracy.',
+    'I specialize in creating seamless digital experiences with optimized performance and fully responsive designs across all devices.',
+    'I excel in collaborative environments, actively contributing to cross-functional teams and delivering 92% of projects on time.',
+    'I am a continuous learner, regularly exploring emerging web technologies to stay ahead in the ever-evolving tech landscape.',
+    'My goal is to develop innovative solutions that boost user engagement while upholding technical excellence and efficiency.'
+  ];
 
 export default aboutMe;

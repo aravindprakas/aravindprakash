@@ -1,35 +1,44 @@
-import React, { useRef } from "react";
-import background from "../assets/ParallaxHeader/background-new.png";
-import foreground from "../assets/ParallaxHeader/foreground-new.png";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useRef } from 'react';
 
-export default function ParallaxHeader() {
+function ParallaxHeader() {
+  const headerRef = useRef(null);
+  const nameRef = useRef(null);
+  const professionRef = useRef(null);
 
-  const ref = useRef(null);  
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
 
+      if (nameRef.current && professionRef.current) {
+        nameRef.current.style.transform = `translateY(${scrollY * 0.4}px)`;
+        professionRef.current.style.transform = `translateY(${scrollY * 0.6}px)`;
+        professionRef.current.style.opacity = `${1 - scrollY / 600}`;
+      }
+    };
 
-  const {scrollYProgress} = useScroll({
-    target: ref,
-    offset:['start start','end start'],
-})
-
-const backgroundY= useTransform(scrollYProgress, [0,1],['0%' , '100%']);
-const textY= useTransform(scrollYProgress, [0,1],['0%' , '200%']);
-
-console.log(scrollYProgress);
-
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <main  id="home"  className="w-full h-screen overflow-hidden relative grid place-items-center bg-[#244550]">
-      <motion.h1 className="z-1 font-bold text-7xl md:text-9xl relative text-white bottom-7" style={{y:textY}}> 
-        Aravind Prakash{" "}
-      </motion.h1>
-      <motion.div ref={ref} className="absolute z-0 inset-0 left-0" style={{y:backgroundY}}>
-        <img src={background} alt="Background" />
-      </motion.div>
-      <div className="absolute z-2 w-screen">
-        <img src={foreground} alt="Foreground" />
-      </div>
-    </main>
+    <div
+      ref={headerRef}
+      className="relative h-screen bg-gradient-to-br from-black to-black/90 text-white overflow-hidden flex flex-col items-center justify-center"
+    >
+      <h1
+        ref={nameRef}
+        className="font-beautiful text-5xl sm:text-7xl md:text-8xl font-bold transition-transform duration-300 ease-out"
+      >
+        Aravind Prakash G
+      </h1>
+      <p
+        ref={professionRef}
+        className="text-xl sm:text-2xl md:text-3xl mt-4 text-gray-300 transition-opacity duration-300"
+      >
+        Frontend Developer
+      </p>
+    </div>
   );
 }
+
+export default ParallaxHeader;
