@@ -10,7 +10,7 @@ function About() {
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["40%", "-40%"]);
-  const rotate = useTransform(scrollYProgress, [0, 1], ["0deg", "90deg"]);
+  const rotate = useTransform(scrollYProgress, [0, 1], ["90deg", "0deg"]);
   const blur = useTransform(scrollYProgress, [0, 1], ["0px", "8px"]);
   const cardY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
