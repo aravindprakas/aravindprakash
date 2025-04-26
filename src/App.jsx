@@ -5,7 +5,8 @@ import About from "./components/About.jsx";
 import { useEffect } from "react";
 import SkillsShowcase from "./components/Skills.jsx";
 import FourWords from "./components/FourWords.jsx";
-import LoaderWithAG,{NavBar} from "./components/Loader.jsx";
+import QualitiesScroller from "./components/QualitiesScroller.jsx";
+import NavBar from "./Unused/NavBar.jsx";
 
 function App() {
   useEffect(() => {
@@ -23,14 +24,13 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <LoaderWithAG>
-        <ParallaxHeader />
-      </LoaderWithAG>
-      <NavBar />
-      <About />
-      <FourWords />
-      <SkillsShowcase />
-      <div className="h-screen bg-white"></div>
+        <ParallaxHeader key={"home"} />
+        <NavBar />
+        <About key={"about"} />
+        <FourWords key={'four words'}/>
+        <SkillsShowcase key={"skills"} />
+        <QualitiesScroller key={'qualities'} />
+        <div key={"contact"} className="h-screen bg-black"></div>
     </div>
   );
 }
