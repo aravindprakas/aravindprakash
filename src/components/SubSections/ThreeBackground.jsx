@@ -9,9 +9,8 @@ function Model() {
   const modelRef = useRef();
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
-  // Longitude and latitude of India
-  const indiaLongitude = 82.5; // in degrees
-  const indiaLatitude = 20.6; // in degrees
+  const indiaLongitude = 82.5;
+  const indiaLatitude = 20.6;
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -38,16 +37,14 @@ function Model() {
             roughness: 1,
           });
 
-          // Inverting the texture mapping (flipping the Y axis) to fix the inversion
           child.material.map.wrapT = THREE.RepeatWrapping;
           child.material.map.repeat.set(1, -1);
           child.material.map.needsUpdate = true;
         }
       });
 
-      // Rotate the model to position India at the center
-      gltf.scene.rotation.y = THREE.MathUtils.degToRad(indiaLongitude - 180); // Adjust longitude
-      gltf.scene.rotation.x = THREE.MathUtils.degToRad(indiaLatitude); // Adjust latitude
+      gltf.scene.rotation.y = THREE.MathUtils.degToRad(indiaLongitude - 180);
+      gltf.scene.rotation.x = THREE.MathUtils.degToRad(indiaLatitude);
     }
   }, [gltf, texture]);
 

@@ -1,5 +1,5 @@
 import React from "react";
-import '../style/QualitiesBanner.css'
+import '../../style/QualitiesBanner.css'
 
 const qualities = [
   "Pixel-Perfect UI",
@@ -24,7 +24,7 @@ const QualitiesBanner = () => {
       <div className="flex animate-scroll hover:animate-slowScroll">
         <div className="whitespace-nowrap font-beautiful text-white text-4xl md:text-6xl uppercase">
           {qualities.map((item, idx) => (
-            <span key={idx} className="mx-10 inline-block font-beautiful font-semibold">
+            <span key={idx} className="mx-10 inline-block tracking-wide">
               {item}
             </span>
           ))}
@@ -32,7 +32,7 @@ const QualitiesBanner = () => {
 
         <div className="whitespace-nowrap text-white text-4xl md:text-6xl uppercase">
           {qualities.map((item, idx) => (
-            <span key={`dup-${idx}`} className="mx-10 inline-block font-semibold">
+            <span key={`dup-${idx}`} className="mx-10 inline-block tracking-wide">
               {item}
             </span>
           ))}

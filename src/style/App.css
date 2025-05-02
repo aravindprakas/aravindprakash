@@ -3,15 +3,14 @@
 
 *{
   scroll-behavior: smooth;
-  font-family: 'Poppins',sans-serif;
+  font-family: 'Anton', sans-serif;
+  cursor: none;
 }
 body{
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: "Raleway";
-
   background-color: black;
+  
 }
-
 

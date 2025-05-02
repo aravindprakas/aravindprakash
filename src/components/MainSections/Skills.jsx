@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import skills from "../data/skills.jsx";
+import skills from "../../data/skills.jsx";
 
 export default function SkillsShowcase() {
   const containerRef = useRef(null);
   return (
     <section ref={containerRef} className="py-16 px-6 text-center bg-black">
-      <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12">
+      <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 tracking-wider">
         A versatile developer skilled in a diverse set of technologies aimed at
         building modern, high-performing apps.
       </p>
@@ -25,10 +25,10 @@ export default function SkillsShowcase() {
             <div className="flex items-start space-x-4">
               <div className="p-4 bg-white/20 rounded-lg">{skill.icon}</div>
               <div>
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl tracking-wide text-white">
                   {skill.title}
                 </h3>
-                <p className="text-white/80 mt-2">{skill.description}</p>
+                <p className="text-white/80 mt-2 tracking-wide">{skill.description}</p>
               </div>
             </div>
           </motion.div>

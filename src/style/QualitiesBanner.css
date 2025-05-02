@@ -8,7 +8,7 @@
   }
   
   .animate-scroll {
-    animation: scroll 10s linear infinite;
+    animation: scroll 25s linear infinite;
     animation-play-state: running;
   }
 
