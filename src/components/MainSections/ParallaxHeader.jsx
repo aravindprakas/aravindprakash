@@ -39,25 +39,10 @@ function ParallaxHeader() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      if (nameRef.current && professionRef.current) {
-        nameRef.current.style.transform = `translateY(${scrollY * 0.4}px)`;
-        professionRef.current.style.transform = `translateY(${scrollY * 0.6}px)`;
-        professionRef.current.style.opacity = `${1 - scrollY / 100}`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div
       ref={headerRef}
-      className="relative z-10 top-0 left-0 w-full h-screen bg-black text-white overflow-hidden flex flex-col items-center justify-center transition-opacity duration-1000"
+      className="relative z-10 top-0 left-0 w-full h-screen bg-black text-gray-100 overflow-hidden flex flex-col items-center justify-center transition-opacity duration-1000"
       // style={{ opacity: loaded ? 1 : 0 , backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <div className="fixed top-0 left-0 w-full h-full z-0">
@@ -79,7 +64,7 @@ function ParallaxHeader() {
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          Frontend Developer
+          Developer
         </p>
       </div>
     </div>

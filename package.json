@@ -1,5 +1,6 @@
 {
   "name": "portfolio-vite",
+  "homepage": "https://aravindprakash.github.io/aravindprakash",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build && npm run deploy",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fontsource/league-spartan": "^5.2.5",
@@ -17,6 +20,7 @@
     "@splinetool/react-spline": "^4.0.0",
     "@tailwindcss/vite": "^4.0.15",
     "framer-motion": "^12.5.0",
+    "gh-pages": "^6.3.0",
     "lucide-react": "^0.485.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

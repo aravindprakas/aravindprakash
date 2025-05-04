@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import backgroundImage from '../../assets/Space.jpg';
 
 function FourWords() {
   const elementsRef = useRef([]);
@@ -46,7 +47,7 @@ function FourWords() {
   const words = ['Interface Design', 'User Experience', 'Accessibility', 'Optimization'];
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center gap-5 py-60 text-center px-4 bg-black text-white">
+    <div className="w-full h-screen flex flex-col items-center justify-center gap-5 py-60 text-center px-4 bg-black text-gray-300" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' , backgroundOpacity: '0.5'}}>
       {words.map((word, i) => (
         <h1
           key={i}

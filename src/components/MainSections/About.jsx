@@ -38,7 +38,7 @@ function About() {
                 key={index}
                 className="w-[250px] md:w-[350px] h-auto flex-shrink-0 items-center mr-0 rounded-4xl p-5 bg-black/20 backdrop-blur-lg border border-white/30"
               >
-                <p className="text-amber-50 p-3 text-2xl tracking-wide">{d}</p>
+                <p className="text-gray-300 p-3 text-2xl tracking-wide">{d}</p>
               </div>
             ))}
           </motion.div>

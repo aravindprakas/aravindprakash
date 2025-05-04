@@ -22,7 +22,7 @@ const QualitiesBanner = () => {
       <div className="absolute right-0 top-0 h-full w-50 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
 
       <div className="flex animate-scroll hover:animate-slowScroll">
-        <div className="whitespace-nowrap font-beautiful text-white text-4xl md:text-6xl uppercase">
+        <div className="whitespace-nowrap font-beautiful text-gray-300 text-4xl md:text-6xl uppercase">
           {qualities.map((item, idx) => (
             <span key={idx} className="mx-10 inline-block tracking-wide">
               {item}
@@ -30,7 +30,7 @@ const QualitiesBanner = () => {
           ))}
         </div>
 
-        <div className="whitespace-nowrap text-white text-4xl md:text-6xl uppercase">
+        <div className="whitespace-nowrap text-gray-300 text-4xl md:text-6xl uppercase">
           {qualities.map((item, idx) => (
             <span key={`dup-${idx}`} className="mx-10 inline-block tracking-wide">
               {item}

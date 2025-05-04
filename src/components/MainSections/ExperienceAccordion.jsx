@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import React, { useState } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import React, { useState, useRef } from "react";
 
 const projects = [
   {
@@ -20,34 +20,55 @@ const projects = [
   },
 ];
 
-
 export default function ExperienceAccordion() {
   const [openId, setOpenId] = useState(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const toggleAccordion = (id) => {
     setOpenId(openId === id ? null : id);
   };
 
   return (
-    <div className="max-w-8xl w-full mx-auto bg-black text-gray-300 font-serif p-4 h-fit flex flex-col mt-20">
-      <p className="uppercase text-xl tracking-widest mb-4">Experience</p>
-      {projects.map((project, index) => (
+    <div className="w-full h-screen mx-auto bg-black text-gray-300 font-serif p-4 mt-20">
+      <p className="uppercase text-xl sm:text-2xl tracking-widest mb-8 text-center sm:text-left">
+        Experience
+      </p>
+      {projects.map((project) => (
         <div
           key={project.id}
           className="border-t border-b border-gray-700 py-4"
         >
           <div
             onClick={() => toggleAccordion(project.id)}
-            className="flex justify-between items-center cursor-pointer transition duration-300 ease-in p-4 rounded-lg"
+            className="flex flex-col md:flex-row md:justify-between md:items-center cursor-pointer transition duration-300 ease-in p-4 rounded-lg"
           >
-            <div className="flex items-center space-x-4">
-              <span className="text-sm">{`0${project.id}`}</span>
-              <span className="text-9xl sm:text-8xl">{project.name}</span>
-              <span className="text-m sm:text-xl">{project.designation}</span>
+            <div className="flex flex-col md:flex-row md:items-center md:space-x-6 space-y-2 md:space-y-0">
+              <span className="text-sm md:text-base">{`0${project.id}`}</span>
+              <motion.span
+                ref={ref}
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-3xl md:text-8xl"
+              >
+                {project.name}
+              </motion.span>
+              <motion.span
+                ref={ref}
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }} className="text-base md:text-lg text-gray-400">
+                {project.designation}
+              </motion.span>
             </div>
-            <span className="uppercase text-xs tracking-widest">
+            <motion.span
+                ref={ref}
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }} className="uppercase text-xs md:text-sm tracking-widest mt-2 md:mt-0">
               {project.time}
-            </span>
+            </motion.span>
           </div>
           <AnimatePresence>
             {openId === project.id && (
@@ -56,7 +77,7 @@ export default function ExperienceAccordion() {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="overflow-hidden mt-2 pl-12 text-xl text-white/70"
+                className="overflow-hidden mt-2 md:mt-4 px-2 md:px-12 text-base md:text-lg text-white/70"
               >
                 {project.details}
               </motion.div>

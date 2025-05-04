@@ -21,14 +21,23 @@ export default function SkillsShowcase() {
             transition={{ delay: index * 0.1, duration: 0.35 }}
             viewport={{ once: true, amount: 0.3 }}
             className={`${skill.bg} p-6 text-left rounded-2xl shadow-lg flex items-center h-60`}
+            style={{
+              boxShadow: `0 0 0 rgba(0,0,0,0)`,
+            }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: `0 0 25px ${skill.glow}`,
+            }}
           >
             <div className="flex items-start space-x-4">
               <div className="p-4 bg-white/20 rounded-lg">{skill.icon}</div>
               <div>
-                <h3 className="text-xl tracking-wide text-white">
+                <h3 className="text-xl tracking-wide text-gray-300">
                   {skill.title}
                 </h3>
-                <p className="text-white/80 mt-2 tracking-wide">{skill.description}</p>
+                <p className="text-white/80 mt-2 tracking-wide">
+                  {skill.description}
+                </p>
               </div>
             </div>
           </motion.div>

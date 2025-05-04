@@ -97,3 +97,34 @@ const Tab = ({ children, setPosition, tag }) => {
 };
 
 export default NavBar;
+
+<div className="flex justify-center flex-wrap text-sm md:text-base gap-6 uppercase font-light">
+          {socials.map((social, idx) => (
+            <a key={idx} href="#" className="hover:underline">
+              <motion.button
+                className="relative w-40 h-12 overflow-hidden rounded-full bg-black text-white border-white border-2 uppercase px-4 md:px-8 flex justify-center items-center"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="absolute h-full flex items-center justify-center whitespace-nowrap">
+                  <motion.div
+                    className="px-4 py-2 text-sm md:text-base uppercase tracking-wide"
+                    initial={{ x: "0%"}}
+                    whileHover={{
+                      x: ["0%", "-600%"],
+                      transition: {
+                        x: { repeat: Infinity, ease: "linear", duration: 40 },
+                      },
+                    }}
+                  >
+                    <span className="text-sm md:text-2xl tracking-wider mr-10 md:p-0 p-1.5">
+                      {social} &nbsp; {social} &nbsp; {social} &nbsp; {social}{" "}
+                      &nbsp;
+                      {social} &nbsp; {social} &nbsp; {social} &nbsp; {social}{" "}
+                      &nbsp;
+                    </span>
+                  </motion.div>
+                </div>
+              </motion.button>
+            </a>
+          ))}
+        </div>
