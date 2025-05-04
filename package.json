@@ -16,7 +16,7 @@
     "@fontsource/league-spartan": "^5.2.5",
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
-    "@react-three/postprocessing": "^3.0.4",
+    "@react-three/postprocessing": "^3.0.4",  
     "@splinetool/react-spline": "^4.0.0",
     "@tailwindcss/vite": "^4.0.15",
     "framer-motion": "^12.5.0",
