@@ -18,14 +18,13 @@ export default function SkillsShowcase() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0.5, x: 30 }}
-            transition={{ delay: index * 0.1, duration: 0.35 }}
+            transition={{duration: 0.35 }}
             viewport={{ once: true, amount: 0.3 }}
             className={`${skill.bg} p-6 text-left rounded-2xl shadow-lg flex items-center h-60`}
             style={{
               boxShadow: `0 0 0 rgba(0,0,0,0)`,
             }}
             whileHover={{
-              scale: 1.05,
               boxShadow: `0 0 25px ${skill.glow}`,
             }}
           >

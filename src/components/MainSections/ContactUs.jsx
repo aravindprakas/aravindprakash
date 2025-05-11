@@ -1,4 +1,7 @@
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
+
 export default function ContactSection() {
   const tags = [
     "FRONTEND DEVELOPMENT",
@@ -10,10 +13,41 @@ export default function ContactSection() {
     "CLOUD & DEVOPS FUNDAMENTALS",
   ];
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const formRef = useRef(null);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          setSuccess(true);
+          setTimeout(() => {
+            setSuccess(false);
+            setIsOpen(false);
+          }, 3000);
+        },
+        (error) => {
+          alert("Failed to send. Try again.");
+          console.error(error);
+        }
+      );
+    console.log("SERVICE:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
+    console.log("TEMPLATE:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+    console.log("KEY:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  };
+
   const socials = ["DRIBBBLE", "BEHANCE", "MAIL", "INSTAGRAM"];
 
   return (
-    <section className="bg-black text-gray-300 py-20 px-4">
+    <section className="bg-black text-gray-300 py-20 px-4 relative">
       <div className="max-w-5xl mx-auto text-center">
         <h1 className="relative text-6xl md:text-9xl tracking-wider uppercase leading-tight mb-10">
           Let’s <br /> Connect
@@ -40,6 +74,7 @@ export default function ContactSection() {
           </span>
 
           <motion.button
+            onClick={() => setIsOpen(true)}
             className="relative w-40 h-12 overflow-hidden rounded-full bg-gray-300 text-black uppercase flex items-center justify-center"
             whileHover={{ scale: 1.05 }}
           >
@@ -56,14 +91,77 @@ export default function ContactSection() {
               >
                 <span className="text-2xl tracking-widest mr-10">
                   Contact Me &nbsp; Contact Me &nbsp; Contact Me &nbsp; Contact
-                  Me &nbsp; Contact Me &nbsp; Contact Me &nbsp; Contact Me
-                  &nbsp; Contact Me &nbsp;
+                  Me &nbsp;
                 </span>
               </motion.div>
             </div>
           </motion.button>
         </div>
       </div>
+
+      {/* Form Popup */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          >
+            <div className="bg-white text-black rounded-2xl p-8 w-[90%] max-w-md relative">
+              <h2 className="text-2xl font-bold mb-4 text-center">
+                Contact Form
+              </h2>
+              {success ? (
+                <p className="text-green-600 text-center">
+                  Message sent successfully!
+                </p>
+              ) : (
+                <form
+                  ref={formRef}
+                  onSubmit={sendEmail}
+                  className="flex flex-col gap-4"
+                >
+                  <input
+                    type="text"
+                    name="user_name"
+                    placeholder="Your Name"
+                    required
+                    className="border p-2 rounded-md"
+                  />
+                  <input
+                    type="email"
+                    name="user_email"
+                    placeholder="Your Email"
+                    required
+                    className="border p-2 rounded-md"
+                  />
+                  <input
+                    type="text"
+                    name="user_number"
+                    placeholder="Your Phone Number"
+                    required
+                    className="border p-2 rounded-md"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-black text-white rounded-md py-2 hover:bg-gray-800 transition-all"
+                  >
+                    Submit
+                  </button>
+                  <button
+                    type="button"
+                    className="text-sm text-gray-500 mt-2 underline"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Cancel
+                  </button>
+                </form>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

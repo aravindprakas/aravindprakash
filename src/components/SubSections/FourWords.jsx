@@ -47,12 +47,19 @@ function FourWords() {
   const words = ['Interface Design', 'User Experience', 'Accessibility', 'Optimization'];
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center gap-5 py-60 text-center px-4 bg-black text-gray-300" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' , backgroundOpacity: '0.5'}}>
+    <div
+      className="w-full min-h-screen flex flex-col items-center justify-center gap-5 px-4 py-24 sm:py-40 md:py-60 bg-black text-gray-300"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       {words.map((word, i) => (
         <h1
           key={i}
           ref={(el) => (elementsRef.current[i] = el)}
-          className="blur-text text-4xl sm:text-6xl md:text-7xl lg:text-9xl blur transition-all duration-500"
+          className="blur-text text-6xl sm:text-7xl md:text-8xl lg:text-9xl blur transition-all duration-500"
         >
           {word}
         </h1>
@@ -62,3 +69,4 @@ function FourWords() {
 }
 
 export default FourWords;
+  
