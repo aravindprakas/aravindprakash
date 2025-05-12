@@ -177,17 +177,17 @@
             className="relative hidden md:flex"
           >
             <Cursor position={position} />
-            <Tab tag="about" setPosition={setPosition}>
-              About
+            <Tab tag="about" setPosition={setPosition} >
+              <p className="tracking-wider">About</p>
             </Tab>
             <Tab tag="skills" setPosition={setPosition}>
-              Skills
+              <p className="tracking-wider">Skills</p>
             </Tab>
             <Tab tag="experience" setPosition={setPosition}>
-              Experience
+              <p className="tracking-wider">Experience</p>
             </Tab>
             <Tab tag="contact" setPosition={setPosition}>
-              Contact
+              <p className="tracking-wider">Contact</p>
             </Tab>
           </ul>
         </div>
@@ -209,7 +209,7 @@
                     scrollTo(tag);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="text-white text-3xl font-semibold tracking-wide uppercase"
+                  className="text-white text-3xl font-semibold tracking-wider uppercase"
                 >
                   {tag}
                 </button>
