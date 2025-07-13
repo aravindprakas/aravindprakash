@@ -8,8 +8,7 @@ import QualitiesScroller from "./components/SubSections/QualitiesScroller.jsx";
 import AGLoadingScreen from "./components/MainSections/Loader.jsx";
 import ExperienceAccordion from "./components/MainSections/ExperienceAccordion.jsx";
 import Cursor from "./components/SubSections/Cursor.jsx";
-import ContactUs from "./components/MainSections/ContactUs.jsx";
-import { Contact } from "lucide-react";
+import ContactSection from "./components/MainSections/ContactUs.jsx";
 
 function App() {
   useEffect(() => {
@@ -35,7 +34,7 @@ function App() {
         <SkillsShowcase data-key={"skills"} />
         <QualitiesScroller data-key={"qualities"} />
         <ExperienceAccordion data-key={"experience"} />
-        <ContactUs data-key={"contact"} />
+        <ContactSection data-key={"contact"} />
       </AGLoadingScreen>
     </div>
   );
