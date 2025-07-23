@@ -63,13 +63,6 @@
     }, []);
 
     useEffect(() => {
-      document.body.style.overflow = hideAll ? "auto" : "hidden";
-      return () => {
-        document.body.style.overflow = "auto";
-      };
-    }, [hideAll]);
-
-    useEffect(() => {
       if (count < 100) {
         const timer = setTimeout(() => setCount((prev) => prev + 1), 20);
         return () => clearTimeout(timer);
@@ -104,7 +97,7 @@
 
     return (
       <ScrollContext.Provider value={{ scrollTo }}>
-        <div className="relative w-full h-screen">
+        <div className="relative w-full">
           {!hideAll && (
             <div className="w-full h-screen bg-black overflow-hidden fixed inset-0 z-[9999]">
               <div className="w-full h-full flex items-center justify-center z-[200] relative">

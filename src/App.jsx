@@ -1,4 +1,5 @@
 import "./style/App.css";
+import Lenis from "@studio-freight/lenis";
 import ParallaxHeader from "./components/MainSections/ParallaxHeader.jsx";
 import About from "./components/MainSections/About.jsx";
 import { useEffect } from "react";
@@ -12,6 +13,24 @@ import ContactSection from "./components/MainSections/ContactUs.jsx";
 
 function App() {
   useEffect(() => {
+    const lenis = new Lenis({
+      smooth: true,
+      lerp: 0.02, // lower is slower/smoother, try 0.07 for slow
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smoothTouch: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy();
+  }, []);
+
+  useEffect(() => {
     const disableTabNavigation = (e) => {
       if (e.key === "Tab") {
         e.preventDefault();
@@ -24,9 +43,10 @@ function App() {
       document.removeEventListener("keydown", disableTabNavigation);
     };
   }, []);
+
   return (
     <div className="App">
-      <Cursor/> 
+      <Cursor />
       <AGLoadingScreen>
         <ParallaxHeader data-key={"home"} />
         <About data-key={"about"} />

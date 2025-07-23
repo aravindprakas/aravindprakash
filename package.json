@@ -20,6 +20,7 @@
     "@react-three/fiber": "^9.1.2",
     "@react-three/postprocessing": "^3.0.4",
     "@splinetool/react-spline": "^4.0.0",
+    "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.0.15",
     "framer-motion": "^12.5.0",
     "lucide-react": "^0.485.0",

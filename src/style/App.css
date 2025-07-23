@@ -2,17 +2,14 @@
 
 
 *{
-  scroll-behavior: smooth;
   font-family: 'Anton', sans-serif;
   cursor: none;
-  
 }
 body{
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
   background-color: black;
-  
 }
 
 .hide-scrollbar {
