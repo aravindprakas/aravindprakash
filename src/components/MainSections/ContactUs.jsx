@@ -109,12 +109,12 @@ export default function ContactSection() {
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
           >
             <div className="bg-white text-black rounded-2xl p-8 w-[90%] max-w-md relative">
-              <h2 className="text-2xl font-bold mb-4 text-center">
-                Contact Form
+              <h2 className="text-2xl tracking-wider  font-bold mb-4 text-center">
+                CONTACT FORM
               </h2>
               {success ? (
-                <p className="text-green-600 text-center">
-                  Message sent successfully!
+                <p className="text-green-600 tracking-wider text-center">
+                  MESSAGE SENT SUCCESSFULLY!
                 </p>
               ) : (
                 <form
@@ -125,21 +125,21 @@ export default function ContactSection() {
                   <input
                     type="text"
                     name="user_name"
-                    placeholder="Your Name"
+                    placeholder="NAME"
                     required
                     className="border p-2 rounded-md"
                   />
                   <input
                     type="email"
                     name="user_email"
-                    placeholder="Your Email"
+                    placeholder="EMAIL"
                     required
                     className="border p-2 rounded-md"
                   />
                   <input
                     type="text"
                     name="user_number"
-                    placeholder="Your Phone Number"
+                    placeholder="PHONE NUMBER"
                     required
                     className="border p-2 rounded-md"
                   />
@@ -147,14 +147,14 @@ export default function ContactSection() {
                     type="submit"
                     className="bg-black text-white rounded-md py-2 hover:bg-gray-800 transition-all"
                   >
-                    Submit
+                    SUBMIT
                   </button>
                   <button
                     type="button"
-                    className="text-sm text-gray-500 mt-2 underline"
+                    className="text-sm text-gray-500 mt-2 underline hover:text-gray-800 transition-all inline-flex align-center mx-auto"
                     onClick={() => setIsOpen(false)}
                   >
-                    Cancel
+                    CANCEL
                   </button>
                 </form>
               )}

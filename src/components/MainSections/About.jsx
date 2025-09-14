@@ -47,12 +47,11 @@ function About() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [inView]);
 
-  // Interpolated values
   const lerp = (start, end, t) => start + (end - start) * t;
   const xValue = lerp(40, -40, scrollProgress);
   const rotateValue = lerp(160, 0, scrollProgress);
   const blurValue = lerp(0, 8, scrollProgress);
-  const cardYValue = lerp(0, 20, scrollProgress);
+  // const cardYValue = lerp(0, 20, scrollProgress); translateY(${cardYValue}%)
   const visibleCards = aboutMe.slice(0, 5);
 
   return (
@@ -76,7 +75,7 @@ function About() {
             <div
               className="flex min-w-[150%] justify-around will-change-transform gap-6"
               style={{
-                transform: `translateX(${xValue}%) translateY(${cardYValue}%)`,
+                transform: `translateX(${xValue}%)`,
                 transition: "transform 0.2s linear",
               }}
             >
