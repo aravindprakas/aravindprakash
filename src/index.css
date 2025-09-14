@@ -1,11 +1,5 @@
 @import "tailwindcss";
 
-@layer base {
-    * {
-      @apply select-none;
-    }
-  }
-
   @font-face {
     font-family: 'Beautiful Freak';
     src: url('/fonts/BeautifulFreak.otf') format('opentype');

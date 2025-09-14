@@ -5,10 +5,12 @@
   font-family: 'Anton', sans-serif;
   cursor: none;
 }
+
 body{
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  padding-bottom: env(safe-area-inset-bottom);
   background-color: black;
 }
 

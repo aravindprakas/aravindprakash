@@ -23,7 +23,7 @@ export default function AGLoadingScreen({ children }) {
   const [hideAll, setHideAll] = useState(false);
 
   // Typewriter state
-  const quote = "Design is not just what it looks like and feels like. Design is how it works.\n Steve Jobs";
+  const quote = "Design is not just what it looks like and feels like. Design is how it works.\n Steve Job";
 
   const [typed, setTyped] = useState("");
   const [typingDone, setTypingDone] = useState(false);
