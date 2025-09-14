@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     const lenis = new Lenis({
       smooth: true,
-      lerp: 0.02, // lower is slower/smoother, try 0.07 for slow
+      lerp: 0.2, // lower is slower/smoother, try 0.07 for slow
       direction: "vertical",
       gestureDirection: "vertical",
       smoothTouch: true,

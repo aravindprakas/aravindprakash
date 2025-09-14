@@ -47,7 +47,7 @@ export default function ContactSection() {
   const socials = ["DRIBBBLE", "BEHANCE", "MAIL", "INSTAGRAM"];
 
   return (
-    <section className="bg-black text-gray-300 py-20 px-4 relative">
+    <section className="bg-black text-gray-300 px-4 relative">
       <div className="max-w-5xl mx-auto text-center">
         <h1 className="relative text-6xl md:text-9xl tracking-wider uppercase leading-tight mb-10">
           Let’s <br /> Connect
