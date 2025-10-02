@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import backgroundImage from '../../assets/Space.jpg';
+import { words } from '../../data/about.js';
 
 function FourWords() {
   const elementsRef = useRef([]);
@@ -44,7 +45,6 @@ function FourWords() {
     };
   }, []);
 
-  const words = ['Interface Design', 'User Experience', 'Accessibility', 'Optimization'];
 
   return (
     <div
@@ -59,7 +59,7 @@ function FourWords() {
         <h1
           key={i}
           ref={(el) => (elementsRef.current[i] = el)}
-          className="blur-text text-6xl sm:text-7xl md:text-8xl lg:text-9xl blur transition-all duration-500"
+          className="blur-text text-6xl sm:text-7xl md:text-8xl lg:text-9xl blur transition-all duration-500 text-center"
         >
           {word}
         </h1>

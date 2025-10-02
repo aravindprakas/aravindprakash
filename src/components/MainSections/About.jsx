@@ -4,10 +4,8 @@ import wheel from "../../assets/ring.jpg";
 
 function About() {
   const targetRef = useRef(null);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState();
   const [scrollProgress, setScrollProgress] = useState(0);
-
-  // Intersection Observer for lazy rendering
   useEffect(() => {
     if (!targetRef.current) return;
     const observer = new window.IntersectionObserver(
@@ -17,8 +15,6 @@ function About() {
     observer.observe(targetRef.current);
     return () => observer.disconnect();
   }, []);
-
-  // Throttle scroll updates (simple version)
   useEffect(() => {
     if (!inView) return;
     let ticking = false;
@@ -51,8 +47,7 @@ function About() {
   const xValue = lerp(40, -40, scrollProgress);
   const rotateValue = lerp(160, 0, scrollProgress);
   const blurValue = lerp(0, 8, scrollProgress);
-  // const cardYValue = lerp(0, 20, scrollProgress); translateY(${cardYValue}%)
-  const visibleCards = aboutMe.slice(0, 5);
+  const visibleCards = aboutMe;
 
   return (
     <div ref={targetRef} className="relative" style={{ height: "250vh" }}>

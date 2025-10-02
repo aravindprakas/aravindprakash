@@ -1,11 +1,14 @@
 const aboutMe = [
-    'I am a results-driven Software Engineer with expertise in Adobe Experience Manager (AEM) and React.js, focused on building scalable and high-performance web applications.',
-    'I have a proven track record of completing 100% of assigned AEM component customizations and improving development efficiency by 30%.',
-    'I consistently deliver solutions that meet business requirements with a 95% completion rate and maintain 98% design-to-implementation accuracy.',
-    'I specialize in creating seamless digital experiences with optimized performance and fully responsive designs across all devices.',
-    'I excel in collaborative environments, actively contributing to cross-functional teams and delivering 92% of projects on time.',
-    'I am a continuous learner, regularly exploring emerging web technologies to stay ahead in the ever-evolving tech landscape.',
-    'My goal is to develop innovative solutions that boost user engagement while upholding technical excellence and efficiency.'
-  ];
+  'I am a results-driven Software Engineer with expertise in AEM and React.js, building scalable and high-performance applications.',
+  'I have developed over 25 reusable AEM components, cutting development time by 30% and improving authoring efficiency.',
+  'I consistently deliver optimized solutions, enhancing page speed by 40% through dispatcher caching and REST API integrations.',
+  'I specialize in combining React.js with AEM to create seamless digital experiences that are 99% responsive across all devices.',
+  'I excel in team collaboration, extending AEM components, templates, and fragments to support multilingual rollouts and consistency.',
+  'I am a continuous learner, driving TypeScript adoption in React modules while exploring CI/CD pipelines and modern frontend tools.',
+  'My goal is to design innovative, reusable, and performance-driven solutions that boost engagement and ensure technical excellence.'
+];
+
+export const words = ['Interface Design', 'User Experience', 'Accessibility', 'Optimization'];
+
 
 export default aboutMe;

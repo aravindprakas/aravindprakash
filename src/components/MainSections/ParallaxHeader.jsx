@@ -52,15 +52,15 @@ function ParallaxHeader() {
       <div className="fixed z-20 text-center">
         <h1
           ref={nameRef}
-          className={`text-5xl sm:text-7xl md:text-8xl font-bold transform transition-transform duration-700 ease-out tracking-wider ${
+          className={`text-5xl sm:text-7xl md:text-8xl font-bold transform transition-transform duration-300 ease-out tracking-wider ${
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          Aravind Prakash G
+          Aravind Prakash
         </h1>
         <p
           ref={professionRef}
-          className={`text-xl sm:text-2xl md:text-3xl mt-4 text-gray-300 transition-all duration-700 ease-out ${
+          className={`text-xl sm:text-2xl md:text-3xl mt-4 text-gray-300 transition-all duration-300 ease-out ${
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
