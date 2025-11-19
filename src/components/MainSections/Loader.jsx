@@ -63,7 +63,7 @@ export default function AGLoadingScreen({ children }) {
 
   useEffect(() => {
     let i = 0;
-    const speed = 58; // ms per character
+    const speed = 58;
     setTyped("");
     setTypingDone(false);
     const timer = setInterval(() => {
@@ -153,7 +153,6 @@ export default function AGLoadingScreen({ children }) {
   );
 }
 
-/* ========================= NavBar & helpers (same as before) ========================= */
 
 export function NavBar() {
   const tabs = ["about", "skills", "experience", "contact"];

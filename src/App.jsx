@@ -10,6 +10,7 @@ import AGLoadingScreen from "./components/MainSections/Loader.jsx";
 import ExperienceAccordion from "./components/MainSections/ExperienceAccordion.jsx";
 import Cursor from "./components/SubSections/Cursor.jsx";
 import ContactSection from "./components/MainSections/ContactUs.jsx";
+import ChatBubble from "./components/SubSections/ChatBubble.jsx";
 
 function App() {
   useEffect(() => {
@@ -48,6 +49,7 @@ function App() {
     <div className="App">
       <Cursor />
       <AGLoadingScreen>
+        <ChatBubble />
         <ParallaxHeader data-key={"home"} />
         <About data-key={"about"} />
         <FourWords />
