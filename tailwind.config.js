@@ -5,6 +5,9 @@ export default {
     extend: {
       fontFamily: {
         display: ['"Anton"', "sans-serif"],
+        fancy: ['"Quintessential"', "serif"],
+        suisse: ['"SuisseIntl"', "sans-serif"],
+        beautiful: ['"Beautiful Freak"', "cursive"],
       },
       keyframes: {
         scrollLeft: {
@@ -14,9 +17,6 @@ export default {
       },
       animation: {
         scroll: "scrollLeft 20s linear infinite",
-      },
-      fontFamily: {
-        beautiful: ['"Beautiful Freak"', "cursive"],
       },
       transitionProperty: {
         blur: "filter",

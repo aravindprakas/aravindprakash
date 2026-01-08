@@ -1,17 +1,9 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import SkewedSocialLinks from "../SubSections/3dSocial";
 
 export default function ContactSection() {
-  const tags = [
-    "FRONTEND DEVELOPMENT",
-    "AEM DEVELOPMENT",
-    "FLUTTER DEVELOPMENT",
-    "PERFORMANCE OPTIMIZATION",
-    "CI/CD AUTOMATION",
-    "UI/UX DESIGN SYSTEMS",
-    "CLOUD & DEVOPS FUNDAMENTALS",
-  ];
 
   const [isOpen, setIsOpen] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -43,30 +35,12 @@ export default function ContactSection() {
     console.log("TEMPLATE:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
     console.log("KEY:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   };
-
-  const socials = ["DRIBBBLE", "BEHANCE", "MAIL", "INSTAGRAM"];
-
   return (
-    <section className="bg-black text-gray-300 px-4 relative">
+    <section className="bg-black text-gray-300 relative">
       <div className="max-w-5xl mx-auto text-center">
         <h1 className="relative text-6xl md:text-9xl tracking-wider uppercase leading-tight mb-10">
           Let’s <br /> Connect
         </h1>
-
-        <p className="uppercase mb-6 text-sm md:text-base font-light">
-          I'm always interested about
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-7 mb-10">
-          {tags.map((tag, idx) => (
-            <span
-              key={idx}
-              className="px-4 py-2 border border-white rounded-full text-sm md:text-xl uppercase tracking-wide"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
 
         <div className="flex justify-center items-center mb-10">
           <span className="uppercase mr-4 text-sm md:text-base tracking-wider">
@@ -162,6 +136,7 @@ export default function ContactSection() {
           </motion.div>
         )}
       </AnimatePresence>
+      <SkewedSocialLinks />
     </section>
   );
 }
