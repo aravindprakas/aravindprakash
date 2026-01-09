@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import SkewedSocialLinks from "../SubSections/3dSocial";
 
-export default function ContactSection() {
+export default function ContactSection({id}) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -36,7 +36,7 @@ export default function ContactSection() {
     console.log("KEY:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   };
   return (
-    <section className="bg-black text-gray-300 relative">
+    <section id={id} className="bg-black text-gray-300 relative">
       <div className="max-w-5xl mx-auto text-center">
         <h1 className="relative text-6xl md:text-9xl tracking-wider uppercase leading-tight mb-10">
           Let’s <br /> Connect

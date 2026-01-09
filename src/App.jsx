@@ -4,12 +4,12 @@ import ParallaxHeader from "./components/MainSections/ParallaxHeader.jsx";
 import { useEffect } from "react";
 import SkillsShowcase from "./components/MainSections/Skills.jsx";
 import QualitiesScroller from "./components/SubSections/QualitiesScroller.jsx";
-import AGLoadingScreen from "./components/MainSections/Loader.jsx";
 import ExperienceAccordion from "./components/MainSections/ExperienceAccordion.jsx";
 import Cursor from "./components/SubSections/Cursor.jsx";
 import ContactSection from "./components/MainSections/ContactUs.jsx";
 import ChatBubble from "./components/SubSections/ChatBubble.jsx";
 import About from "./components/MainSections/About.jsx";
+import NavBar from "./components/SubSections/NavBar.jsx";
 
 function App() {
   useEffect(() => {
@@ -47,15 +47,14 @@ function App() {
   return (
     <div className="App">
       <Cursor />
-      <AGLoadingScreen>
         <ChatBubble />
-        <ParallaxHeader data-key={"home"} />
-        <About data-key={"about"} />
-        <SkillsShowcase data-key={"skills"} />
-        <QualitiesScroller data-key={"qualities"} />
-        <ExperienceAccordion data-key={"experience"} />
-        <ContactSection data-key={"contact"} />
-      </AGLoadingScreen>
+        <NavBar/>
+        <ParallaxHeader id="home" />
+        <About id="about" />
+        <SkillsShowcase id="skills" />
+        <QualitiesScroller />
+        <ExperienceAccordion id="experience" />
+        <ContactSection id="contact" />
     </div>
   );
 }

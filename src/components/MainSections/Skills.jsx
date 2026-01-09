@@ -2,23 +2,27 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import skills from "../../data/skills.jsx";
 
-export default function SkillsShowcase() {
+export default function SkillsShowcase({ id }) {
   const containerRef = useRef(null);
   return (
-    <section ref={containerRef} className="py-16 px-6 text-center bg-black">
+    <section
+      id={id}
+      ref={containerRef}
+      className="scroll-mt-24 py-16 px-6 text-center bg-black"
+    >
       <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 tracking-wider">
         A versatile developer skilled in a diverse set of technologies aimed at
         building modern, high-performing apps.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-19 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
         {skills.map((skill, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0.5, x: 30 }}
-            transition={{duration: 0.35 }}
+            transition={{ duration: 0.35 }}
             viewport={{ once: true, amount: 0.3 }}
             className={`${skill.bg} p-6 text-left rounded-2xl shadow-lg flex items-center h-60`}
             style={{

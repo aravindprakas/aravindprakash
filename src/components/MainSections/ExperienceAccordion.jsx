@@ -27,11 +27,11 @@ function useInView({ threshold = 0.18, rootMargin = "-60px" } = {}) {
 
 // --- Experience Data ---
 
-export default function ExperienceAccordion() {
+export default function ExperienceAccordion({id}) {
   const [openId, setOpenId] = useState(null);
 
   return (
-    <div className="w-full py-30 md:py-50 bg-black text-gray-300 font-serif p-4 pt-20">
+    <div id={id} className="w-full py-30 md:py-50 bg-black text-gray-300 font-serif p-4 pt-20">
       <p className="uppercase text-xl sm:text-2xl tracking-widest mb-8 text-center sm:text-left">
         Experience
       </p>

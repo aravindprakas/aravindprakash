@@ -3,7 +3,7 @@ import Me from '../../assets/Aravind.jpg';
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
-const About = () => {
+export default function About({id}){
   const containerRef = useRef(null);
 
   const TEXT_PARTS = [
@@ -109,7 +109,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black">
+    <div id={id} className="min-h-screen bg-black">
       {/* Main scroll reveal section */}
       <section className="bg-black px-8 md:px-16 py-16 relative min-h-screen">
         <div className="max-w-7xl mx-auto">
@@ -137,4 +137,3 @@ const About = () => {
   );
 };
 
-export default About;
