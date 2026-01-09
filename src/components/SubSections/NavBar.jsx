@@ -22,7 +22,7 @@ export default function NavBar() {
     setActiveSection(id);
 
     document.getElementById(id)?.scrollIntoView({
-      behavior: "auto",
+      behavior: "smooth",
       block: "start",
     });
   };
