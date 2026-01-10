@@ -63,7 +63,7 @@ export default function ContactSection({id}) {
                   },
                 }}
               >
-                <span className="text-2xl tracking-widest mr-10">
+                <span className="text-xl mr-10">
                   Contact Me &nbsp; Contact Me &nbsp; Contact Me &nbsp; Contact
                   Me &nbsp;
                 </span>

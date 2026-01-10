@@ -8,7 +8,7 @@ export default function SkillsShowcase({ id }) {
     <section
       id={id}
       ref={containerRef}
-      className="scroll-mt-24 py-16 px-6 text-center bg-black"
+      className="scroll-mt-28 min-h-screen py-16 px-6 text-center bg-black"
     >
       <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 tracking-wider">
         A versatile developer skilled in a diverse set of technologies aimed at

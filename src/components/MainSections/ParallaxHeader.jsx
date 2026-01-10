@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Four from "../../assets/overlay-four.mp4";
 
 function ParallaxHeader({id}) {
@@ -39,7 +39,6 @@ function ParallaxHeader({id}) {
   }, []);
 
   return (
-    // 1. The Track: 200vh tall to allow for scroll time
     <div id={id} ref={containerRef} className="relative w-full h-[100vh]">
       {/* 2. The Sticky Viewport: Stays locked in place while we scroll the track */}
       <header

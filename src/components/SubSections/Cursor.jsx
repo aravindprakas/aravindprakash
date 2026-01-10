@@ -47,7 +47,7 @@ export default function CustomCursor() {
         zIndex: 9999,
       }}
       whileHover={{ scale: 1.5 }}
-      className="mix-blend-difference"
+      className="mix-blend-difference hidden lg:block"
     />
   );
 }

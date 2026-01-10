@@ -104,8 +104,8 @@ export default function VD4UChatbot() {
         </div>
 
         <div
-          className="flex-1 p-3 overflow-y-auto space-y-2 bg-[var(--bg)]"
-          style={{ overscrollBehavior: "contain" }}
+          className="flex-1 p-3 overflow-y-auto overscroll-contain space-y-2 bg-[var(--bg)]"
+          onWheel={(e) => e.stopPropagation()}
         >
           {messages.map((msg, idx) => (
             <div

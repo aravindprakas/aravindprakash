@@ -1,25 +1,22 @@
-import { useEffect, useRef, useMemo } from 'react';
-import Me from '../../assets/Aravind.jpg';
+import { useEffect, useRef, useMemo } from "react";
+import Me from "../../assets/Aravind.jpg";
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
-export default function About({id}){
+export default function About({ id }) {
   const containerRef = useRef(null);
 
   const TEXT_PARTS = [
     {
-      text: "I am",
+      text: "I am Aravind",
       style: {
         fontFamily: "'professional', sans-serif",
         fontWeight: 400,
       },
     },
     {
-      text: " Aravind Prakash, ",
-      style: {
-        fontFamily: "'Apparel', serif",
-        fontStyle: "italic",
-      },
+      text: " Prakash, ",
+      style: { fontFamily: "'Apparel', sans-serif" },
     },
     {
       text: "a frontend developer crafting web experiences that move, respond, and connect.",
@@ -39,7 +36,7 @@ export default function About({id}){
           <span
             key={`${partIndex}-${index}`}
             className={`inline-block word ${part.className}`}
-            style={{ willChange: 'opacity, filter' }}
+            style={{ ...part.style, willChange: "opacity, filter" }}
           >
             {word}
           </span>
@@ -52,7 +49,7 @@ export default function About({id}){
     const el = containerRef.current;
     if (!el) return;
 
-    const words = el.querySelectorAll('.word');
+    const words = el.querySelectorAll(".word");
     const baseOpacity = 0;
     const blurStrength = 4;
 
@@ -81,7 +78,8 @@ export default function About({id}){
         const wordStart = index * perWordOffset;
         const wordEnd = wordStart + (1 - staggerAmount);
 
-        let wordProgress = (progress - wordStart) / (wordEnd - wordStart || 1e-6);
+        let wordProgress =
+          (progress - wordStart) / (wordEnd - wordStart || 1e-6);
         wordProgress = clamp(wordProgress, 0, 1);
 
         const opacity = baseOpacity + (1 - baseOpacity) * wordProgress;
@@ -98,12 +96,12 @@ export default function About({id}){
     };
 
     update();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(frameId);
     };
   }, []);
@@ -115,8 +113,14 @@ export default function About({id}){
         <div className="max-w-7xl mx-auto">
           <h2 ref={containerRef} className="relative">
             {/* Floating image */}
-            <div className="float-left w-64 md:w-80 lg:w-96 h-64 md:h-80 lg:h-96 mr-6 md:mr-12 mb-8 mt-[2.2em] overflow-hidden">
-              <img 
+            <div
+              className="
+    w-full h-72 mb-8 overflow-hidden
+    md:float-left md:w-80 md:h-80 md:mr-12 md:mt-[2.2em]
+    lg:w-96 lg:h-96
+  "
+            >
+              <img
                 src={Me}
                 alt="Portrait"
                 className="w-full h-full object-cover rounded-lg"
@@ -135,5 +139,4 @@ export default function About({id}){
       </section>
     </div>
   );
-};
-
+}

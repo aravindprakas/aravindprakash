@@ -20,9 +20,9 @@ export default function SkewedSocialLinks() {
     },
     {
       icon: FaGithub,
-      color: "#181717",
-      side: "#181717",
-      bottom: "#181717",
+      color: "#2B1B3D",
+      side: "#2B1B3D",
+      bottom: "#2B1B3D",
       link: "https://github.com/aravindprakas"
     },
     {
@@ -74,7 +74,7 @@ export default function SkewedSocialLinks() {
                   pl-6 flex items-center gap-4
                   bg-black text-white
                   transform rotate-[-30deg] skew-x-[25deg]
-                  transition-all duration-500 ease-out
+                  transition-all ease-out
                   shadow-[-20px_20px_10px_rgba(0,0,0,0.5)]
 
                   hover:-translate-y-[18px]
@@ -86,7 +86,7 @@ export default function SkewedSocialLinks() {
                   before:w-[20px] before:h-full
                   before:bg-[#b1b1b1]
                   before:skew-y-[-45deg]
-                  before:transition-all duration-500
+                  before:transition-all
                   group-hover:before:bg-[var(--side)]
 
                   after:content-['']

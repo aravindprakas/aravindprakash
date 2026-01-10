@@ -14,11 +14,10 @@ const navItems = [
 ];
 
 export default function NavBar() {
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
 
   const scrollToSection = (id) => {
-    // user intent wins immediately
     setActiveSection(id);
 
     document.getElementById(id)?.scrollIntoView({
@@ -31,15 +30,20 @@ export default function NavBar() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+        const id = visibleSections[0].target.id;
+        setActiveSection(id === "home" ? null : id);
       },
+
       {
-        threshold: 0,
-        rootMargin: "-96px 0px -50% 0px",
+        threshold: 0.15,
+        rootMargin: "-96px 0px -40% 0px",
       }
     );
 
@@ -49,6 +53,19 @@ export default function NavBar() {
     });
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY < 350) {
+        setActiveSection(null);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // run once on mount
+
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
