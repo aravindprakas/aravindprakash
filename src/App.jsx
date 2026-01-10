@@ -13,6 +13,19 @@ import NavBar from "./components/SubSections/NavBar.jsx";
 
 function App() {
   useEffect(() => {
+    const setVH = () => {
+      document.documentElement.style.setProperty(
+        "--vh",
+        `${window.innerHeight}px`
+      );
+    };
+
+    setVH();
+    window.addEventListener("resize", setVH);
+    return () => window.removeEventListener("resize", setVH);
+  }, []);
+
+  useEffect(() => {
     const lenis = new Lenis({
       smooth: true,
       lerp: 0.07, // lower is slower/smoother, try 0.07 for slow
@@ -47,14 +60,14 @@ function App() {
   return (
     <div className="App">
       <Cursor />
-        <ChatBubble />
-        <NavBar/>
-        <ParallaxHeader id="home" />
-        <About id="about" />
-        <SkillsShowcase id="skills" />
-        <QualitiesScroller />
-        <ExperienceAccordion id="experience" />
-        <ContactSection id="contact" />
+      <ChatBubble />
+      <NavBar />
+      <ParallaxHeader id="home" />
+      <About id="about" />
+      <SkillsShowcase id="skills" />
+      <QualitiesScroller />
+      <ExperienceAccordion id="experience" />
+      <ContactSection id="contact" />
     </div>
   );
 }

@@ -107,9 +107,9 @@ export default function About({ id }) {
   }, []);
 
   return (
-    <div id={id} className="min-h-screen bg-black">
+    <div id={id} className="min-h-[100dvh] bg-black">
       {/* Main scroll reveal section */}
-      <section className="bg-black px-8 md:px-16 py-16 relative min-h-screen">
+      <section className="bg-black px-8 md:px-16 py-16 relative min-h-[100dvh]">
         <div className="max-w-7xl mx-auto">
           <h2 ref={containerRef} className="relative">
             {/* Floating image */}

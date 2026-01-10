@@ -1,10 +1,8 @@
 /* 1. Imports must always be at the very top */
-@import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quintessential&display=swap");
 
 /* 2. The Standard Tailwind Directives (Use these instead of @import "tailwindcss") */
-@import 'tailwindcss';
-
-
+@import "tailwindcss";
 
 @font-face {
   font-family: SuisseIntl;
@@ -20,10 +18,9 @@
   font-style: normal;
 }
 
-body{
+body {
   color: #f5f5f5;
 }
-
 
 :root {
   --primary: #000000;
@@ -33,4 +30,9 @@ body{
   --text-dark: #000000;
   --text-light: #ffffff;
   --border: #000000;
+  --vh: 100dvh;
+}
+
+.fullscreen {
+  height: var(--vh);
 }
