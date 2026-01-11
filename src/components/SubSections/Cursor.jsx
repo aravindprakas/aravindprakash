@@ -1,43 +1,51 @@
-import { useEffect } from "react";
-import { motion, useSpring, useMotionValue, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useMotionValue, useAnimation } from "framer-motion";
 
 export default function CustomCursor() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothX = useSpring(mouseX, { stiffness: 500, damping: 50 });
-  const smoothY = useSpring(mouseY, { stiffness: 500, damping: 50 });
-
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
   const controls = useAnimation();
 
+  const mouse = useRef({ x: 0, y: 0 });
+  const rafId = useRef(null);
+
   useEffect(() => {
+    const update = () => {
+      x.set(mouse.current.x - 12);
+      y.set(mouse.current.y - 12);
+      rafId.current = requestAnimationFrame(update);
+    };
+
     const move = (e) => {
-      mouseX.set(e.clientX - 12); // adjust 12 → half circle size
-      mouseY.set(e.clientY - 12);
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
     };
 
     const click = () => {
       controls.start({
         scale: [1, 2, 1],
         opacity: [1, 0.5, 1],
-        transition: { duration: 0.5, ease: "easeOut" },
+        transition: { duration: 0.4, ease: "easeOut" },
       });
     };
 
+    rafId.current = requestAnimationFrame(update);
     window.addEventListener("mousemove", move);
     window.addEventListener("mousedown", click);
 
     return () => {
+      cancelAnimationFrame(rafId.current);
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mousedown", click);
     };
-  }, [mouseX, mouseY, controls]);
+  }, [controls, x, y]);
 
   return (
     <motion.div
       animate={controls}
       style={{
-        x: smoothX,
-        y: smoothY,
+        x,
+        y,
         width: 24,
         height: 24,
         borderRadius: "50%",
@@ -46,7 +54,6 @@ export default function CustomCursor() {
         pointerEvents: "none",
         zIndex: 9999,
       }}
-      whileHover={{ scale: 1.5 }}
       className="mix-blend-difference hidden lg:block"
     />
   );
