@@ -1,7 +1,7 @@
 import { useEffect, useRef, useMemo } from "react";
 import Me from "../../assets/Aravind.jpg";
 
-const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
 export default function About({ id }) {
   const containerRef = useRef(null);
@@ -16,7 +16,9 @@ export default function About({ id }) {
     },
     {
       text: " Prakash, ",
-      style: { fontFamily: "'Apparel', sans-serif" },
+      style: {
+        fontFamily: "'Apparel', sans-serif",
+      },
     },
     {
       text: "a frontend developer crafting web experiences that move, respond, and connect.",
@@ -29,16 +31,19 @@ export default function About({ id }) {
 
   const splitText = useMemo(() => {
     return TEXT_PARTS.flatMap((part, partIndex) =>
-      part.text.split(/(\s+)/).map((word, index) => {
-        if (word.match(/^\s+$/)) return word;
+      part.text.split(/(\s+)/).map((chunk, index) => {
+        if (/^\s+$/.test(chunk)) return chunk;
 
         return (
           <span
             key={`${partIndex}-${index}`}
-            className={`inline-block word ${part.className}`}
-            style={{ ...part.style, willChange: "opacity, filter" }}
+            className="word inline-block"
+            style={{
+              ...part.style,
+              willChange: "opacity, transform, filter",
+            }}
           >
-            {word}
+            {chunk}
           </span>
         );
       })
@@ -49,44 +54,61 @@ export default function About({ id }) {
     const el = containerRef.current;
     if (!el) return;
 
-    const words = el.querySelectorAll(".word");
+    const words = Array.from(el.querySelectorAll(".word"));
+    if (!words.length) return;
+
     const baseOpacity = 0;
-    const blurStrength = 4;
+    const translateY = 12;
+    const blurPx = 3; // controlled blur
+    const staggerAmount = 0.6;
 
-    words.forEach((w) => {
-      w.style.opacity = baseOpacity;
-      w.style.filter = `blur(${blurStrength}px)`;
-    });
+    const totalWords = words.length;
+    const perWordOffset = staggerAmount / totalWords;
 
+    let start = 0;
+    let range = 1;
     let frameId;
+
+    const measure = () => {
+      const vh = window.innerHeight;
+      start = vh * 0.5;
+      const end = vh * 0.1;
+      range = start - end;
+    };
+
+    const initStyles = () => {
+      words.forEach((w) => {
+        w.style.opacity = baseOpacity;
+        w.style.transform = `translateY(${translateY}px)`;
+        w.style.filter = `blur(${blurPx}px)`;
+      });
+    };
 
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
 
-      const start = vh * 0.5;
-      const end = vh * 0.1;
+      // Skip work if fully offscreen
+      if (rect.bottom < 0 || rect.top > vh) return;
 
-      let progress = (start - rect.top) / (start - end);
-      progress = clamp(progress, 0, 1);
-
-      const totalWords = words.length || 1;
-      const staggerAmount = 0.6;
-      const perWordOffset = staggerAmount / totalWords || 0;
+      let progress = clamp((start - rect.top) / range, 0, 1);
 
       words.forEach((wordEl, index) => {
         const wordStart = index * perWordOffset;
         const wordEnd = wordStart + (1 - staggerAmount);
 
-        let wordProgress =
-          (progress - wordStart) / (wordEnd - wordStart || 1e-6);
-        wordProgress = clamp(wordProgress, 0, 1);
+        let wp = clamp(
+          (progress - wordStart) / (wordEnd - wordStart),
+          0,
+          1
+        );
 
-        const opacity = baseOpacity + (1 - baseOpacity) * wordProgress;
-        const blur = blurStrength * (1 - wordProgress);
+        // Blur dies early – not tied to full scroll
+        const blur = blurPx * Math.max(0, 1 - wp * 2);
 
-        wordEl.style.opacity = opacity;
-        wordEl.style.filter = `blur(${blur}px)`;
+        wordEl.style.opacity = wp;
+        wordEl.style.transform = `translateY(${(1 - wp) * translateY}px)`;
+        wordEl.style.filter = blur > 0 ? `blur(${blur}px)` : "none";
       });
     };
 
@@ -95,30 +117,32 @@ export default function About({ id }) {
       frameId = requestAnimationFrame(update);
     };
 
+    measure();
+    initStyles();
     update();
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", measure);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", measure);
     };
   }, []);
 
   return (
     <div id={id} className="min-h-[100dvh] bg-black">
-      {/* Main scroll reveal section */}
       <section className="bg-black px-8 md:px-16 py-16 relative min-h-[100dvh]">
         <div className="max-w-7xl mx-auto">
           <h2 ref={containerRef} className="relative">
             {/* Floating image */}
             <div
               className="
-    w-full h-72 mb-8 overflow-hidden
-    md:float-left md:w-80 md:h-80 md:mr-12 md:mt-[2.2em]
-    lg:w-96 lg:h-96
-  "
+                w-full h-72 mb-8 overflow-hidden
+                md:float-left md:w-80 md:h-80 md:mr-12 md:mt-[2.2em]
+                lg:w-96 lg:h-96
+              "
             >
               <img
                 src={Me}
@@ -134,8 +158,7 @@ export default function About({ id }) {
           </h2>
         </div>
 
-        {/* Clearfix */}
-        <div className="clear-both"></div>
+        <div className="clear-both" />
       </section>
     </div>
   );

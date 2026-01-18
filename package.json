@@ -22,7 +22,7 @@
     "@splinetool/react-spline": "^4.0.0",
     "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.0.15",
-    "framer-motion": "^12.5.0",
+    "framer-motion": "^12.26.2",
     "gsap": "^3.13.0",
     "lucide-react": "^0.485.0",
     "react": "^19.0.0",

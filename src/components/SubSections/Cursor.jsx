@@ -52,7 +52,7 @@ export default function CustomCursor() {
         backgroundColor: "white",
         position: "fixed",
         pointerEvents: "none",
-        zIndex: 9999,
+        zIndex: 99,
       }}
       className="mix-blend-difference hidden lg:block"
     />
