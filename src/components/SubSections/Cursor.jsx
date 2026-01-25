@@ -1,27 +1,21 @@
 import { useEffect, useRef } from "react";
-import { motion, useMotionValue, useAnimation } from "framer-motion";
+import { motion, useMotionValue, useAnimation, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const cursorX = useSpring(0, { damping: 30, stiffness: 200 });
+  const cursorY = useSpring(0, { damping: 30, stiffness: 200 });
   const controls = useAnimation();
 
-  const mouse = useRef({ x: 0, y: 0 });
-  const rafId = useRef(null);
+  const mousePos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const update = () => {
-      x.set(mouse.current.x - 12);
-      y.set(mouse.current.y - 12);
-      rafId.current = requestAnimationFrame(update);
+    const handleMouseMove = (e) => {
+      mousePos.current = { x: e.clientX, y: e.clientY };
+      cursorX.set(e.clientX - 12);
+      cursorY.set(e.clientY - 12);
     };
 
-    const move = (e) => {
-      mouse.current.x = e.clientX;
-      mouse.current.y = e.clientY;
-    };
-
-    const click = () => {
+    const handleClick = () => {
       controls.start({
         scale: [1, 2, 1],
         opacity: [1, 0.5, 1],
@@ -29,32 +23,35 @@ export default function CustomCursor() {
       });
     };
 
-    rafId.current = requestAnimationFrame(update);
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mousedown", click);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousedown", handleClick);
 
     return () => {
-      cancelAnimationFrame(rafId.current);
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mousedown", click);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousedown", handleClick);
     };
-  }, [controls, x, y]);
+  }, [cursorX, cursorY, controls]);
 
   return (
-    <motion.div
-      animate={controls}
-      style={{
-        x,
-        y,
-        width: 24,
-        height: 24,
-        borderRadius: "50%",
-        backgroundColor: "white",
-        position: "fixed",
-        pointerEvents: "none",
-        zIndex: 99,
-      }}
-      className="mix-blend-difference hidden lg:block"
-    />
+    <>
+      <style>{`* { cursor: none !important; }`}</style>
+      <motion.div
+        animate={controls}
+        style={{
+          x: cursorX,
+          y: cursorY,
+          width: 24,
+          height: 24,
+          borderRadius: "50%",
+          backgroundColor: "white",
+          position: "fixed",
+          pointerEvents: "none",
+          zIndex: 9999,
+          top: 0,
+          left: 0,
+        }}
+        className="mix-blend-difference hidden lg:block"
+      />
+    </>
   );
 }

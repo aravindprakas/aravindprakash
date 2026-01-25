@@ -76,7 +76,7 @@ export default function VD4UChatbot() {
         onClick={() => setOpen((o) => !o)}
         className={`fixed z-50 bottom-7 right-7 bg-[var(--primary)] hover:bg-[var(--primary-hover)]
       text-[var(--text-light)] p-3 rounded-full shadow-2xl transition-all duration-300
-      origin-bottom-right border-1 border-[var(--text-light)]
+      origin-bottom-right border-2
       ${open ? "scale-0 opacity-0" : "scale-100 opacity-100"}`}
         aria-label="Open Chatbot"
       >
@@ -87,7 +87,6 @@ export default function VD4UChatbot() {
         className={`fixed bottom-7 right-7 z-50 w-[350px] max-w-[90vw] h-[480px]
       bg-[var(--bg)] shadow-2xl rounded-2xl overflow-hidden transition-all
       duration-300 ease-in-out flex flex-col origin-bottom-right
-      border-2 border-[var(--primary)]
       ${
         open ? "scale-100 opacity-100" : "scale-0 opacity-0 pointer-events-none"
       }`}
@@ -95,7 +94,7 @@ export default function VD4UChatbot() {
       >
         <div
           className="flex items-center justify-between px-4 py-3 bg-[var(--primary)]
-      text-[var(--text-light)] border-b border-[var(--primary-hover)]"
+      text-[var(--text-light)]"
         >
           <span>Ask me</span>
           <button onClick={() => setOpen(false)} aria-label="Close">

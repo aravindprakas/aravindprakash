@@ -10,6 +10,7 @@ import ContactSection from "./components/MainSections/ContactUs.jsx";
 import ChatBubble from "./components/SubSections/ChatBubble.jsx";
 import About from "./components/MainSections/About.jsx";
 import NavBar from "./components/SubSections/NavBar.jsx";
+import Projects from "./components/MainSections/Projects.jsx";
 
 function App() {
   useEffect(() => {
@@ -66,6 +67,7 @@ function App() {
       <About id="about" />
       <SkillsShowcase id="skills" />
       <QualitiesScroller />
+      <Projects id="projects"/>
       <ExperienceAccordion id="experience" />
       <ContactSection id="contact" />
     </div>

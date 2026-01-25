@@ -4,11 +4,13 @@ import {
   IoCodeSlashOutline,
   IoBriefcaseOutline,
   IoCallOutline,
+  IoFolderOpenOutline,
 } from "react-icons/io5";
 
 const navItems = [
   { title: "About", id: "about", icon: IoPersonOutline },
   { title: "Skills", id: "skills", icon: IoCodeSlashOutline },
+  { title: "Projects", id: "projects", icon: IoFolderOpenOutline },
   { title: "Experience", id: "experience", icon: IoBriefcaseOutline },
   { title: "Contact", id: "contact", icon: IoCallOutline },
 ];
@@ -44,7 +46,7 @@ export default function NavBar() {
       {
         threshold: 0.15,
         rootMargin: "-96px 0px -40% 0px",
-      }
+      },
     );
 
     navItems.forEach((item) => {

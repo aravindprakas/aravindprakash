@@ -12,7 +12,7 @@ function useInView({ threshold = 0.18, rootMargin = "-60px" } = {}) {
       ([entry]) => {
         if (entry.isIntersecting) setInView(true);
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin },
     );
     observer.observe(ref.current);
     return () => observer.disconnect();
@@ -27,11 +27,14 @@ function useInView({ threshold = 0.18, rootMargin = "-60px" } = {}) {
 
 // --- Experience Data ---
 
-export default function ExperienceAccordion({id}) {
+export default function ExperienceAccordion({ id }) {
   const [openId, setOpenId] = useState(null);
 
   return (
-    <div id={id} className="w-full py-30 md:py-50 bg-black text-gray-300 font-serif p-4 pt-20">
+    <div
+      id={id}
+      className="w-full py-30 md:py-50 bg-black text-gray-300 font-serif p-4 pt-20"
+    >
       <p className="uppercase text-xl sm:text-2xl tracking-widest mb-8 text-center sm:text-left">
         Experience
       </p>
@@ -76,39 +79,16 @@ export default function ExperienceAccordion({id}) {
               <span className="uppercase text-xs md:text-sm tracking-widest mt-2 md:mt-0 text-center md:text-left md:w-auto">
                 {project.time}
               </span>
-              <span className="flex justify-center items-center mt-2 md:m-2 md:flex-none">
-                {openId === project.id ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-white/70"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 15l7-7 7 7"
-                    />
-                  </svg>
-                ) : (
-                  // Down Arrow
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-white/70"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                )}
+              <span className="flex justify-center items-center mt-2 md:m-2 md:pt-1 md:flex-none">
+                <span
+                  className={`
+    flex justify-center items-center mt-5 md:m-2 md:flex-none
+    transition-transform duration-500 ease-out
+    ${openId === project.id ? "rotate-180" : "rotate-0"}
+  `}
+                >
+                  ^
+                </span>
               </span>
             </div>
             <div
