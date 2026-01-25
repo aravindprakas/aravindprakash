@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import VD4U from "../../assets/Vd4u.png";
+import VD4U from "../../assets/VD4U.png";
 import ComingSoon from '../../assets/Coming-soon.png';
 
 const projects = [
